@@ -29,23 +29,28 @@ We use drill-down analysis to dissect the data at a more granular level: for eac
     - `P`, `D`, and `Q` represent the seasonal components of the AR, differencing, and MA parts, respectively
     - `m` refers to the number of periods in each season
 - **Implementation Steps**:
-    - **Stationary Check**: we conduct the Augmented Dickey-Fuller (ADF) test to ensure that the time series is stationary (if p-value is less than significant level, we can reject the null hypothesis and take that the series is stationary).
-    - **ACF/PACF Plots**: we use these plots to select ARIMA/SARIMA model hyperparameters.
-    - **Parameter Optimization**: we use grid search to identify the best of hyperparameters that minimize information crtieria such as AIC. 
+    - **Stationary Check**: We conduct the Augmented Dickey-Fuller (ADF) test to ensure that the time series is stationary (if p-value is less than significant level, we can reject the null hypothesis and take that the series is stationary).
+    - **ACF/PACF Plots**: We use these plots to select ARIMA/SARIMA model hyperparameters.
+    - **Parameter Optimization**: We use grid search to identify the best of hyperparameters that minimize information crtieria such as AIC. 
 
 
 ####  Why Gaussian Processes (GP)?
-- **Rationale**: Chosen for their non-parametric nature, allowing for flexible modeling of time series data with complex patterns.
+- **Rationale**: GPs use Bayesian inference to make forecasts, which are suitable for datasets with complex dependencies and latent dynamics
 - **Implementation Steps**:
-  - **Kernel Selection**: Determine the appropriate kernel functions to capture the data's properties, such as trends and periodicity.
-  - **Hyperparameter Tuning**: Optimize kernel hyperparameters to maximize the log-marginal likelihood, ensuring the model fits the data effectively.
+  - **Kernel Selection**: To determine the appropriate kernel functions, we observe that our data has 1) an increasing trend 2) some form of periodicity. Thus, two main kernels we use are exponential squared (RBF) kernel and periodic kernel.
+  - **Hyperparameter Tuning**: We optimize kernel hyperparameters to maximize the log-marginal likelihood, ensuring the model fits the data effectively.
 
 ## Results
+We use RMSE to evaluate the model performance as the following:
+![](/images/RMSE.png)
 
+Here is the prediction plot by using ARIMA/SARIMA and GP:
 <figure>
-  <img src=/images/data_overview.png>
-  <figcaption>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</figcaption>
+  <img src=https://glosolin.github.io/Time_Series_Walmart_Sales_Forecasting/images/SARIMA_result.png>
+  <img src=https://glosolin.github.io/Time_Series_Walmart_Sales_Forecasting/images/GP_result.png>
+  <figcaption></figcaption>
 </figure>
 
 
 ## Conclusion
+The project confirms the efficiency of ARIMA/SARIMA models for time series forecasting in retail sales. While GPs provide flexibility, their higher computational cost and complexity in hyperparameter tuning make ARIMA/SARIMA a more practical choice for this application. Future work will include integrating external datasets like holidays to account for sales variability during special days and exploring other robust forecasting models, such as LSTM. 
