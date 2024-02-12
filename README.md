@@ -41,8 +41,11 @@ We use drill-down analysis to dissect the data at a more granular level: for eac
   - **Hyperparameter Tuning**: We optimize kernel hyperparameters to maximize the log-marginal likelihood, ensuring the model fits the data effectively.
 
 ## Results
-We use RMSE to evaluate the model performance as the following:
+We use RMSE (normalized) to evaluate the model performance as the following:  
+
 ![](/images/RMSE.png)
+
+The MAPE (mean absolute percentage error) is 2.31% for ARIMA/SARIMA and 5.08% for GPs.  
 
 Here is the prediction plot by using ARIMA/SARIMA and GP:
 <figure>
