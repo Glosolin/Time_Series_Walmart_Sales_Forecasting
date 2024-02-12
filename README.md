@@ -48,11 +48,7 @@ We use RMSE (normalized) to evaluate the model performance as the following:
 The MAPE (mean absolute percentage error) is 2.31% for ARIMA/SARIMA and 5.08% for GPs.  
 
 Here is the prediction plot by using ARIMA/SARIMA and GP:
-<!-- <figure>
-  <img src=https://github.com/Glosolin/Time_Series_Walmart_Sales_Forecasting/images/SARIMA_result.png>
-  <img src=https://github.com/Glosolin/Time_Series_Walmart_Sales_Forecasting/images/GP_result.png>
-  <figcaption></figcaption>
-</figure> -->
+
 ![](/images/SARIMA_result.png)
 ![](/images/GP_result.png)
 
